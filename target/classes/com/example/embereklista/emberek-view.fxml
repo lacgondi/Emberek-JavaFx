@@ -23,7 +23,7 @@
       <HBox>
          <children>
             <TextField promptText="Név" />
-            <Spinner />
+            <Spinner editable="true" />
          </children>
       </HBox>
       <Button mnemonicParsing="false" onAction="#hozzadClick" text="Hozzáadás" />

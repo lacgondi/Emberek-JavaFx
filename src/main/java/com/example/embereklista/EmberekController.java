@@ -14,13 +14,16 @@ public class EmberekController {
     private TableColumn<Ember, Integer> korOszlop;
 
     @FXML
-    private Spinner spinner = new Spinner<Integer>();
+    private Spinner kor = new Spinner<Integer>();
+
+    @FXML
+    private TextField nev;
 
     @FXML
     private void initialize() {
         var factory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 15);
         factory.setWrapAround(true);
-        spinner.setValueFactory(factory);
+        kor.setValueFactory(factory);
         nevOszlop.setCellValueFactory(new PropertyValueFactory<>("nev"));
         korOszlop.setCellValueFactory(new PropertyValueFactory<>("eletkor"));
         Ember e1 = new Ember("asdi", 25);
@@ -32,5 +35,6 @@ public class EmberekController {
     }
 
     public void hozzadClick(ActionEvent actionEvent) {
+        Ember e = new Ember(nev.getText(),(int)kor.getValue());
     }
 }
