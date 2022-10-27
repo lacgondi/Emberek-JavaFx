@@ -9,6 +9,14 @@ public class Ember {
         this.eletkor = eletkor;
     }
 
+    public String getNev() {
+        return nev;
+    }
+
+    public int getEletkor() {
+        return eletkor;
+    }
+
     @Override
     public String toString() {
         return String.format("%-30s %3d", nev, eletkor);
