@@ -12,18 +12,13 @@ public class EmberekController {
     private TableColumn<Ember, String> nevOszlop;
     @FXML
     private TableColumn<Ember, Integer> korOszlop;
-
     @FXML
-    private Spinner kor = new Spinner<Integer>();
-
+    private TextField nevMezo;
     @FXML
-    private TextField nev;
+    private Spinner<Integer> korMezo;
 
     @FXML
     private void initialize() {
-        var factory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 15);
-        factory.setWrapAround(true);
-        kor.setValueFactory(factory);
         nevOszlop.setCellValueFactory(new PropertyValueFactory<>("nev"));
         korOszlop.setCellValueFactory(new PropertyValueFactory<>("eletkor"));
         Ember e1 = new Ember("asdi", 25);
@@ -35,6 +30,18 @@ public class EmberekController {
     }
 
     public void hozzadClick(ActionEvent actionEvent) {
-        Ember e = new Ember(nev.getText(),(int)kor.getValue());
+        emberek.getItems().add(new Ember(nevMezo.getText(),korMezo.getValue()));
+    }
+
+    public void torolClick(ActionEvent actionEvent) {
+        int index = emberek.getSelectionModel().getSelectedIndex();
+        if(index == -1){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("A törléshez előbb válasszon ki egy elemet");
+            alert.show();
+            return;
+        }else{
+            emberek.getItems().remove(index);
+        }
     }
 }
